@@ -3,10 +3,30 @@ import BookCard from "./composants/BookCard";
 
 function App() {
   const [books, setBooks] = useState([
-    { id: 1, titre: "Le Petit Prince", auteur: "Antoine de Saint-Exupéry", estDisponible: true },
-    { id: 2, titre: "Une si longue lettre", auteur: "Mariama Bâ", estDisponible: true },
-    { id: 3, titre: "L'Aventure ambiguë", auteur: "Cheikh Hamidou Kane", estDisponible: false },
-    { id: 4, titre: "Les Misérables", auteur: "Victor Hugo", estDisponible: true },
+    {
+      id: 1,
+      titre: "Le Petit Prince",
+      auteur: "Antoine de Saint-Exupéry",
+      estDisponible: true,
+    },
+    {
+      id: 2,
+      titre: "Une si longue lettre",
+      auteur: "Mariama Bâ",
+      estDisponible: true,
+    },
+    {
+      id: 3,
+      titre: "L'Aventure ambiguë",
+      auteur: "Cheikh Hamidou Kane",
+      estDisponible: false,
+    },
+    {
+      id: 4,
+      titre: "Les Misérables",
+      auteur: "Victor Hugo",
+      estDisponible: true,
+    },
   ]);
 
   const [titre, setTitre] = useState("");
@@ -14,16 +34,14 @@ function App() {
 
   const nbDisponibles = books.filter((b) => b.estDisponible).length;
 
-  // Inverse la disponibilité du livre cliqué
   function onClickEmprunt(bookId) {
     setBooks(
       books.map((b) =>
-        b.id === bookId ? { ...b, estDisponible: !b.estDisponible } : b
-      )
+        b.id === bookId ? { ...b, estDisponible: !b.estDisponible } : b,
+      ),
     );
   }
 
-  // Ajout d'un nouveau livre
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -43,7 +61,9 @@ function App() {
 
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
-      <h1>Bibliothèque universitaire : {nbDisponibles} livre(s) disponible(s)</h1>
+      <h1>
+        Bibliothèque universitaire : {nbDisponibles} livre(s) disponible(s)
+      </h1>
 
       <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
         <input
